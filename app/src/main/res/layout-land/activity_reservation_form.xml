@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".ReservationForm">
+
+    <fragment
+        android:id="@+id/frag1"
+        android:name="com.example.proektna.MyReservationFragment"
+        android:layout_width="365dp"
+        android:layout_height="231dp"
+        tools:layout="@layout/fragment_my_reservation" />
+
+    <fragment
+        android:id="@+id/frag2"
+        android:name="com.example.proektna.MyReservationFragment2"
+        android:layout_width="365dp"
+        android:layout_height="113dp"
+        android:layout_gravity="center|top"
+        tools:layout="@layout/fragment_my_reservation2" />
+
+</LinearLayout>
