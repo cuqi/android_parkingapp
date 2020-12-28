@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 editor.putInt("user_id", userModel.getId());
                 editor.putString("username", userModel.getUsername());
                 editor.putString("password", userModel.getPassword());
+                editor.putString("full_name", userModel.getFname() + " " + userModel.getLname());
                 editor.commit();
 
                 Intent intent = new Intent(this, Cities.class);

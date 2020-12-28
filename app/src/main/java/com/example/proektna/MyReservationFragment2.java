@@ -104,10 +104,6 @@ public class MyReservationFragment2 extends Fragment {
 
         button.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View view1) {
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(view1.getContext());
-                String city_name = prefs.getString("city_name", "Austin");
-                Toast toast = Toast.makeText(getContext(), "button clicked! THE TIME IS: " + t[0] + fullDate[0] + "NAME OF THE CITY: " + city_name, Toast.LENGTH_LONG);
-                toast.show();
                 Intent intent = new Intent(getContext(), ParkingPlaces.class);
                 intent.putExtra("time", t[0]);
                 intent.putExtra("date", fullDate[0]);

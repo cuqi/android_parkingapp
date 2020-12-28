@@ -80,7 +80,7 @@ public class myAdapter3 extends RecyclerView.Adapter<myAdapter3.ViewHolder> {
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         ReservationModel reservationModel = myList.get(i);
 
-        viewHolder.my_user_id.setText(String.valueOf(reservationModel.getUserID()));
+        viewHolder.my_user_id.setText(String.valueOf(reservationModel.getParkingID()));
         viewHolder.my_time_slot.setText(reservationModel.getTimeSlot());
         viewHolder.my_date.setText(reservationModel.getDate());
 

@@ -75,12 +75,12 @@ public class myAdapter2 extends RecyclerView.Adapter<myAdapter2.ViewHolder> {
         DBHelper dbHelper = new DBHelper(context);
         ReservationModel reservationModel = new ReservationModel(1, userID, rm.getId(), timeSlot, date);
 
-
         viewHolder.reserve_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                String y = dbHelper.updateFree(rm.getParking_name());
                 boolean x = dbHelper.reserveParking(reservationModel);
+                notifyDataSetChanged();
                 if (x == true) {
                     Intent intent = new Intent(v.getContext(), ReservationConfirmation.class);
                     intent.putExtra("parking_name", rm.getParking_name());

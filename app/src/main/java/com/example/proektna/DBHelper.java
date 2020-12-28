@@ -209,6 +209,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return coordinates;
     }
 
+    public String updateFree(String parking_name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] args = {parking_name};
+        Cursor cursor = db.rawQuery("UPDATE " + PARKING_TABLE + " SET FREE=FREE-1, TAKEN=TAKEN+1 WHERE PARKING_NAME='" + parking_name + "' AND FREE > 0", null);
+        return cursor.toString();
+    }
 
     public boolean addUser(UserModel userModel) {
         SQLiteDatabase db = this.getWritableDatabase();

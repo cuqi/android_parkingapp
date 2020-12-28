@@ -76,7 +76,6 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 TextView tv = (TextView) v;
-                Toast.makeText(context, tv.getText(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(v.getContext(), ReservationForm.class);
                 // NEW CHANGE
                 //intent.putExtra("city_name", myList.get(i));

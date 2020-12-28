@@ -46,8 +46,6 @@ public class ParkingPlaces extends AppCompatActivity {
 
         List<ParkingModel> parkingModels = dbHelper.getParkings(city_name);
 
-        Toast.makeText(this, parkingModels.get(0).toString(), Toast.LENGTH_LONG).show();
-
         List<String> parkings = new ArrayList<>();
         for(int i = 0; i < parkingModels.size(); i++) {
             parkings.add(parkingModels.get(i).getParking_name());
