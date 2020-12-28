@@ -5,6 +5,20 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <Button
+            android:id="@+id/toolbar_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="220dp"
+            android:layout_marginEnd="10dp"
+            android:text="My Reservations"
+            />
+    </androidx.appcompat.widget.Toolbar>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -23,5 +37,11 @@
         android:layout_marginTop="50dp"
         android:onClick="toMapsActivity"
         />
+
+    <Button
+        android:id="@+id/new_reservation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Reservation" />
 
 </LinearLayout>

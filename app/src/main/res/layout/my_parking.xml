@@ -29,6 +29,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="#4CAF50"
+                android:textAlignment="center"
                 android:textSize="30dp"
                 android:textStyle="bold" />
 
@@ -38,6 +39,7 @@
                 android:layout_height="60dp"
                 android:layout_marginBottom="19dp"
                 android:background="#FF2020"
+                android:textAlignment="center"
                 android:textSize="30dp"
                 android:textStyle="bold" />
 

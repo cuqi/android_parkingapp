@@ -11,6 +11,7 @@
         android:id="@+id/calendarView2"
         android:layout_width="match_parent"
         android:layout_height="352dp"
+        android:layout_marginTop="50dp"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="16dp" />
 

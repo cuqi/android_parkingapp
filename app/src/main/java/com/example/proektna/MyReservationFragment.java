@@ -19,7 +19,7 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 public class MyReservationFragment extends Fragment {
-
+    Button toolbarButton;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,6 +58,7 @@ public class MyReservationFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -70,5 +71,10 @@ public class MyReservationFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
+
+    public void toMyReservations(View view) {
+        Intent intent = new Intent(view.getContext(), MyReservations.class);
+        startActivity(intent);
     }
 }

@@ -21,7 +21,8 @@
             android:id="@+id/login_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LOGIN" />
+            android:text="Login"
+            android:textSize="22dp" />
 
         <EditText
             android:id="@+id/username"
@@ -43,30 +44,24 @@
             android:id="@+id/login_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login"
             android:onClick="checkUser"
-            />
+            android:text="Login"
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/text_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Don't have an account?" />
+            android:text="Don't have an account?"
+            android:textSize="22dp" />
 
         <Button
             android:id="@+id/register_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="toRegisterActivity"
             android:text="REGISTER"
-            android:onClick="toRegisterActivity"/>
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TEST DATABASE"
-            android:onClick="printParking"/>
-
+            android:textSize="18dp" />
 
     </LinearLayout>
 

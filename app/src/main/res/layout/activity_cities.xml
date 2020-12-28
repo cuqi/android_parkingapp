@@ -5,11 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Cities">
-    
+<androidx.appcompat.widget.Toolbar
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <Button
+        android:id="@+id/toolbar_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="220dp"
+        android:layout_marginEnd="10dp"
+        android:text="My Reservations"
+        />
+</androidx.appcompat.widget.Toolbar>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:id="@+id/list"/>
+        android:layout_marginTop="50dp"
+        />
 
 </RelativeLayout>

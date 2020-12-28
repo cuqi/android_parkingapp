@@ -67,14 +67,28 @@ public class myAdapter2 extends RecyclerView.Adapter<myAdapter2.ViewHolder> {
         viewHolder.free.setText(String.valueOf(rm.getFree()));
         viewHolder.taken.setText(String.valueOf(rm.getTaken()));
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.context);
+        int userID = prefs.getInt("user_id", 1);
+        String timeSlot = prefs.getString("timeSlot", "00:00 - 01:00");
+        String date = prefs.getString("date", "01.01.2021");
+
+        DBHelper dbHelper = new DBHelper(context);
+        ReservationModel reservationModel = new ReservationModel(1, userID, rm.getId(), timeSlot, date);
 
 
         viewHolder.reserve_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ReservationConfirmation.class);
-                intent.putExtra("parking_name", rm.getParking_name());
-                v.getContext().startActivity(intent);
+
+                boolean x = dbHelper.reserveParking(reservationModel);
+                if (x == true) {
+                    Intent intent = new Intent(v.getContext(), ReservationConfirmation.class);
+                    intent.putExtra("parking_name", rm.getParking_name());
+                    //Toast.makeText(v.getContext(), reservationModel.toString(), Toast.LENGTH_LONG).show();
+                    v.getContext().startActivity(intent);
+                } else {
+                    Toast.makeText(v.getContext(), reservationModel.toString(), Toast.LENGTH_LONG).show();
+                }
             }
         });
 //        viewHolder.myName.setOnClickListener(new View.OnClickListener() {

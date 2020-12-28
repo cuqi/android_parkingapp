@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +20,7 @@ import java.util.List;
 public class ParkingPlaces extends AppCompatActivity {
     RecyclerView mRecyclerView;
     myAdapter2 mAdapter;
+    Button toolbarButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,11 @@ public class ParkingPlaces extends AppCompatActivity {
         String date = intent.getStringExtra("date");
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("timeSlot", timeSlot);
+        editor.putString("date", date);
+        editor.commit();
+
         int userID = prefs.getInt("user_id", 1);
         String city_name = prefs.getString("city_name", "Austin");
 
@@ -44,6 +52,15 @@ public class ParkingPlaces extends AppCompatActivity {
         for(int i = 0; i < parkingModels.size(); i++) {
             parkings.add(parkingModels.get(i).getParking_name());
         }
+
+        toolbarButton = (Button) findViewById(R.id.toolbar_button);
+        toolbarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), MyReservations.class);
+                startActivity(intent);
+            }
+        }) ;
 
         mRecyclerView = (RecyclerView) findViewById(R.id.parkings);
 

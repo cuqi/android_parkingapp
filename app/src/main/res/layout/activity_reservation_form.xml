@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ReservationForm">
-
     <fragment
         android:id="@+id/frag1"
         android:name="com.example.proektna.MyReservationFragment"

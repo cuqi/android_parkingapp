@@ -16,7 +16,8 @@
             android:id="@+id/register_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="REGISTER" />
+            android:text="Register Account"
+            android:textSize="22dp" />
 
         <EditText
             android:id="@+id/fname_input"
@@ -62,8 +63,9 @@
             android:id="@+id/register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="register"
             android:text="REGISTER"
-            android:onClick="register"/>
+            android:textSize="18dp" />
     </LinearLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

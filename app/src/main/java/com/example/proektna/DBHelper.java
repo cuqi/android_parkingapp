@@ -18,7 +18,7 @@ import java.util.List;
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "database5.db";
+    public static final String DATABASE_NAME = "database6.db";
 
     public static final String USER_TABLE = "USER_TABLE";
     public static final String COLUMN_ID = "ID";
@@ -35,11 +35,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_TAKEN = "TAKEN";
     public static final String COLUMN_X = "X";
     public static final String COLUMN_Y = "Y";
-//    public static final String COLUMN_TIME_SLOT = "TIME_SLOT";
-
-//    public static final String COLUMN_DATE = "DATE";
 
     public static final String RESERVATION_TABLE = "RESERVATION_TABLE";
+    public static final String COLUMN_RESERVATION_ID = "ID";
     public static final String COLUMN_USER_FOREIGN_ID = "USER_ID";
     public static final String COLUMN_PARKING_FOREIGN_ID = "PARKING_ID";
     public static final String COLUMN_TIME_SLOT = "TIME_SLOT";
@@ -74,10 +72,11 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(createParkingTableStatement);
 
         String createReservationTableStatement = "CREATE TABLE " + RESERVATION_TABLE+"(" +
+                COLUMN_RESERVATION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_USER_FOREIGN_ID + " INTEGER, " +
                 COLUMN_PARKING_FOREIGN_ID + " INTEGER, " +
                 COLUMN_TIME_SLOT + " VARCHAR(50), " +
-                COLUMN_DATE + " VARCHAR(50) )";
+                COLUMN_DATE + " VARCHAR(50))";
 
         db.execSQL(createReservationTableStatement);
 
@@ -118,6 +117,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
+        //cv.put(COLUMN_RESERVATION_ID, reservationModel.getReservationID());
         cv.put(COLUMN_USER_FOREIGN_ID, reservationModel.getUserID());
         cv.put(COLUMN_PARKING_FOREIGN_ID, reservationModel.getParkingID());
         cv.put(COLUMN_TIME_SLOT, reservationModel.getTimeSlot());
@@ -157,6 +157,38 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return returnList;
+    }
+
+    public List<ReservationModel> getMyReservations (int userID) {
+
+        List<ReservationModel> returnList = new ArrayList<>();
+        String query = "SELECT * FROM " + RESERVATION_TABLE + " WHERE USER_ID = ?";
+        String[] args = {String.valueOf(userID)}; // ?????
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, args);
+
+        if (cursor.moveToNext()) {
+            do {
+                int reservation_id = cursor.getInt(0);
+                int user_id = cursor.getInt(1);
+                int parking_id = cursor.getInt(2);
+                String timeSlot = cursor.getString(3);
+                String date = cursor.getString(4);
+
+                ReservationModel reservationModel = new ReservationModel(reservation_id, user_id, parking_id, timeSlot, date);
+                returnList.add(reservationModel);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return returnList;
+    }
+
+    public boolean deleteReservation(int reservation_id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.delete(RESERVATION_TABLE, COLUMN_RESERVATION_ID + "=?", new String[]{String.valueOf(reservation_id)}) > 0;
+
     }
 
     public List<Float> getCoordinates(String parking_name) {
